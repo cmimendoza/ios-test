@@ -55,5 +55,7 @@ jobs:
           code-coverage: true
           warnings-as-errors: true
           configuration: release
-          #mobile-provisioning-profiles-base64: |
-          #  ${{ secrets.IPHONE_PROVISIONING_PROFILE_BASE64 }}
+          code-sign-certificate: ${{ secrets.BUILD_CERTIFICATE_BASE64 }}
+          code-sign-certificate-passphrase: ${{ secrets.P12_PASSWORD}}
+          mobile-provisioning-profiles-base64: |
+            ${{ secrets.IPHONE_PROVISIONING_PROFILE_BASE64 }}
