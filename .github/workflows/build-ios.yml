@@ -18,7 +18,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: LS
-        run: ls -l
+        run: |
+          ls -l
+          pwd
 
       - uses: mxcl/xcodebuild@v1
         with:
