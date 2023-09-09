@@ -2,21 +2,26 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-  <key>method</key>
-  <string>app-store</string>
-  <!-- Puedes cambiar el valor de 'method' según tus necesidades. Algunas opciones comunes incluyen 'app-store', 'ad-hoc', 'package', 'enterprise', etc. -->
-
-  <!-- Otras claves opcionales según el método seleccionado -->
-  <key>provisioningProfiles</key>
-  <dict>
-    <key>com.example.myapp</key>
-    <string>MyAppDistribution</string>
-    <!-- Clave y valor que asocian el identificador del paquete de la aplicación con el nombre del perfil de aprovisionamiento -->
-  </dict>
-
-  <!-- Otras claves opcionales según el método seleccionado -->
-  <key>signingCertificate</key>
-  <string>iOS Distribution</string>
-  <!-- Clave y valor que especifican el nombre del certificado de firma -->
+	<key>compileBitcode</key>
+	<false/>
+	<key>destination</key>
+	<string>export</string>
+	<key>method</key>
+	<string>development</string>
+	<key>provisioningProfiles</key>
+	<dict>
+		<key>mx.com.ziksys.ios-test</key>
+		<string>ios-test-dev</string>
+	</dict>
+	<key>signingCertificate</key>
+	<string>Apple Development</string>
+	<key>signingStyle</key>
+	<string>manual</string>
+	<key>stripSwiftSymbols</key>
+	<true/>
+	<key>teamID</key>
+	<string>39TW7U6WHT</string>
+	<key>thinning</key>
+	<string>&lt;none&gt;</string>
 </dict>
 </plist>
