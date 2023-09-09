@@ -15,8 +15,8 @@ jobs:
         platform:
           - iOS
         xcode:
-          - ^14
-    runs-on: macos-10.15
+          - ^13.2.1
+    runs-on: macos-11
     steps:
       - uses: mxcl/xcodebuild@v1
         with:
