@@ -67,4 +67,7 @@ jobs:
         run: |
           ls -l 
           ls -l build
+          ls -l build/Release-iphoneos
+          ls -l build/XCBuildData
           ls -l build.xcresult
+          ls -l build.xcresult/Data
