@@ -17,7 +17,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-
+        
       - name: Install the Apple certificate and provisioning profile
         env:
           BUILD_CERTIFICATE_BASE64: ${{ secrets.BUILD_CERTIFICATE_BASE64 }}
@@ -55,5 +55,5 @@ jobs:
           code-coverage: true
           warnings-as-errors: true
           configuration: release
-          #mobile-provisioning-profiles-base64: |
-          #  ${{ secrets.IPHONE_PROVISIONING_PROFILE_BASE64 }}
+          mobile-provisioning-profiles-base64: |
+            ${{ secrets.IPHONE_PROVISIONING_PROFILE_BASE64 }}
