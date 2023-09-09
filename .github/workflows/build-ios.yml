@@ -1,0 +1,52 @@
+name: Build and Export iOS IPA
+
+env:
+  APP: ios-test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Xcode
+        uses: actions/setup-xcode@v2
+        with:
+          xcode-version: '14'
+
+      #- name: Install dependencies (por ejemplo, CocoaPods)
+      #  run: |
+      #    sudo gem install cocoapods
+      #    pod install
+          
+      - name: Build iOS app
+        run: xcodebuild -workspace ${APP}.xcodeproj -scheme YourScheme -configuration Release -destination "generic/platform=iOS"
+
+
+      - name: Export IPA
+        run: |
+          xcodebuild -exportArchive -archivePath "build/${APP}.xcarchive" -exportPath "build" -exportOptionsPlist "ExportOptions.plist"
+        env:
+          APP_ARCHIVE_PATH: ./build/${APP}.xcarchive
+          IPA_EXPORT_PATH: ./build/${APP}.ipa
+
+      - name: Sign IPA
+        run: |
+          security unlock-keychain -p ${{ secrets.CERTIFICATE_PASSWORD }} ~/Library/Keychains/login.keychain-db
+          security import ./path/to/your/Certificate.p12 -P ${{ secrets.CERTIFICATE_PASSWORD }} -A -t cert -f pkcs12 -k ~/Library/Keychains/login.keychain-db
+          security list-keychains -d user -s ~/Library/Keychains/login.keychain-db
+          security find-identity -v -p codesigning ~/Library/Keychains/login.keychain-db
+          codesign --force --sign "iPhone Distribution: Your Team Name" --entitlements "path/to/your/Entitlements.plist" --timestamp=none "$APP_ARCHIVE_PATH/Products/Applications/${APP}.app"
+
+      - name: Upload IPA
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${APP}
+          path: ${{ env.IPA_EXPORT_PATH }}
