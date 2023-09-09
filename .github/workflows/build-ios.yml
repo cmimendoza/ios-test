@@ -68,6 +68,7 @@ jobs:
           ls -l 
           ls -l build
           ls -l build/Release-iphoneos
-          ls -l build/XCBuildData
-          ls -l build.xcresult
-          ls -l build.xcresult/Data
+          ls -lR build/Release-iphoneos/ios-test.app
+          #ls -l build/XCBuildData
+          #ls -l build.xcresult
+          #ls -l build.xcresult/Data
