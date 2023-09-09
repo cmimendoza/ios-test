@@ -1,8 +1,5 @@
 name: Build and Export iOS IPA
 
-env:
-  APP: ios-test
-
 on:
   push:
     branches:
