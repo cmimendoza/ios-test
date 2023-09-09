@@ -47,6 +47,9 @@ jobs:
           mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
           cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
 
+          ls -l $PP_PATH
+          ls -l ~/Library/MobileDevice/Provisioning\ Profiles
+
       - uses: mxcl/xcodebuild@v1
         with:
           xcode: ${{ matrix.xcode }}
