@@ -66,9 +66,5 @@ jobs:
       - name: valida
         run: |
           ls -l 
-          ls -l build
-          ls -l build/Release-iphoneos
-          ls -lR build/Release-iphoneos/ios-test.app
-          #ls -l build/XCBuildData
-          #ls -l build.xcresult
-          #ls -l build.xcresult/Data
+          ls -lR build
+          ls -lR ios-test.xcodeproj
