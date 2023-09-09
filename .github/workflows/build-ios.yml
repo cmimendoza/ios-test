@@ -30,5 +30,7 @@ jobs:
           code-coverage: true
           warnings-as-errors: true
           configuration: release
+          mobile-provisioning-profiles-base64: |
+            ${{ secrets.IPHONE_PROVISIONING_PROFILE_BASE64 }}
           provisioning-profiles-base64: |
             ${{ secrets.MAC_PROVISIONING_PROFILE_BASE64 }}
